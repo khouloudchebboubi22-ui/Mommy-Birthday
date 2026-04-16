@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Wahiba · Birthday Bridge</title>
+    <!-- Google Fonts: refined & elegant -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- animated cosmic background -->
+    <div class="cosmic-bg"></div>
+    <div class="star-particles" id="starParticles"></div>
+    
+    <main class="journey-container">
+        <!-- Bridge visualization (minimal, refined) -->
+        <div class="bridges-arc">
+            <div class="bridge-node bridge-1" id="bridgeNode1">
+                <div class="bridge-glow"></div>
+                <span class="bridge-number">I</span>
+                <span class="bridge-label">distance</span>
+            </div>
+            <div class="bridge-line line-1-2"></div>
+            <div class="bridge-node bridge-2" id="bridgeNode2">
+                <div class="bridge-glow"></div>
+                <span class="bridge-number">II</span>
+                <span class="bridge-label">memory</span>
+            </div>
+            <div class="bridge-line line-2-3"></div>
+            <div class="bridge-node bridge-3" id="bridgeNode3">
+                <div class="bridge-glow"></div>
+                <span class="bridge-number">III</span>
+                <span class="bridge-label">home</span>
+            </div>
+        </div>
+
+        <!-- poetic message panel -->
+        <div class="verse-panel" id="versePanel">
+            <div class="verse-line" id="verseLine">every mile is just a number</div>
+            <div class="verse-sub" id="verseSub">— step forward —</div>
+        </div>
+
+        <!-- candle & cake section (hidden until step 3 completed) -->
+        <div class="ceremony-section" id="ceremonySection" style="display: none;">
+            <div class="minimal-cake">
+                <div class="cake-tier"></div>
+                <div class="cake-tier top-tier"></div>
+                <div class="candles-holder">
+                    <div class="candle-item" data-candle="0">
+                        <div class="candle-stick"></div>
+                        <div class="flame-core"></div>
+                    </div>
+                    <div class="candle-item" data-candle="1">
+                        <div class="candle-stick"></div>
+                        <div class="flame-core"></div>
+                    </div>
+                    <div class="candle-item" data-candle="2">
+                        <div class="candle-stick"></div>
+                        <div class="flame-core"></div>
+                    </div>
+                </div>
+            </div>
+            <p class="blow-invitation">make a wish, Wahiba · let the light become love</p>
+            <div class="blow-actions">
+                <button class="btn-blow" id="clickBlowBtn">✧ blow with touch ✧</button>
+                <button class="btn-mic" id="micRequestBtn">🎙️ use microphone</button>
+            </div>
+            <div class="mic-feedback" id="micFeedback"></div>
+        </div>
+
+        <!-- final tribute screen (hidden) -->
+        <div class="final-altar" id="finalAltar" style="display: none;">
+            <div class="sunrise-glow"></div>
+            <div class="heart-monogram">⟡ 48 ⟡</div>
+            <h1 class="final-title">happy birthday, Wahiba</h1>
+            <p class="final-message">you are my anchor, my sky, my quiet strength.<br>every bridge I cross leads me back to you.</p>
+            <p class="signature">with love, from across the miles</p>
+        </div>
+
+        <!-- primary navigation button -->
+        <button id="stepBridgeBtn" class="primary-step-btn">→ cross bridge ←</button>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
