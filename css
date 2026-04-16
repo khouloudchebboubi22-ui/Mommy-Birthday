@@ -1,0 +1,379 @@
+/* style.css - modern, elegant, no childish elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none; /* only to avoid accidental text selection, but fine for gift */
+}
+
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle at 30% 10%, #0a0f1e, #03060c);
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* cosmic animated background */
+.cosmic-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at 40% 50%, rgba(20, 30, 55, 0.4), transparent);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.star-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* main container */
+.journey-container {
+    position: relative;
+    z-index: 10;
+    max-width: 700px;
+    width: 100%;
+    background: rgba(12, 18, 28, 0.65);
+    backdrop-filter: blur(12px);
+    border-radius: 3rem;
+    padding: 2rem 1.8rem 2.5rem;
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(210, 180, 140, 0.2);
+    transition: all 0.2s ease;
+}
+
+/* refined bridge arc */
+.bridges-arc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    margin-bottom: 2.8rem;
+    flex-wrap: wrap;
+}
+
+.bridge-node {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(20, 28, 40, 0.7);
+    backdrop-filter: blur(4px);
+    border-radius: 2rem;
+    padding: 0.8rem 1.3rem;
+    min-width: 95px;
+    border: 1px solid rgba(210, 180, 140, 0.3);
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.bridge-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: 2rem;
+    background: radial-gradient(circle, rgba(230, 190, 120, 0.2), transparent);
+    opacity: 0;
+    transition: opacity 0.4s;
+    pointer-events: none;
+}
+
+.bridge-node.active .bridge-glow {
+    opacity: 1;
+    box-shadow: 0 0 12px rgba(230, 190, 120, 0.5);
+}
+
+.bridge-number {
+    font-size: 1.9rem;
+    font-weight: 500;
+    font-family: 'Cormorant Garamond', serif;
+    color: #e6d5b8;
+    letter-spacing: 2px;
+}
+
+.bridge-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #b9aa8a;
+    font-weight: 400;
+    margin-top: 4px;
+}
+
+.bridge-line {
+    width: 45px;
+    height: 1px;
+    background: linear-gradient(90deg, #c9b27c, transparent);
+    opacity: 0.5;
+}
+
+/* verse panel - poetic and minimal */
+.verse-panel {
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 2rem;
+    padding: 1.8rem 1rem;
+    text-align: center;
+    margin: 1rem 0 2rem;
+    border-left: 2px solid #dbbd7a;
+    transition: all 0.3s;
+}
+
+.verse-line {
+    font-size: 1.5rem;
+    font-weight: 500;
+    font-family: 'Cormorant Garamond', serif;
+    color: #f3e7cf;
+    line-height: 1.3;
+    letter-spacing: -0.2px;
+}
+
+.verse-sub {
+    font-size: 0.8rem;
+    color: #bfae8a;
+    margin-top: 12px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* primary button */
+.primary-step-btn {
+    background: rgba(210, 180, 140, 0.12);
+    border: 1px solid rgba(210, 180, 140, 0.6);
+    padding: 0.9rem 1.8rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ecd9b4;
+    border-radius: 3rem;
+    cursor: pointer;
+    transition: all 0.25s;
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 1px;
+    backdrop-filter: blur(8px);
+    margin-top: 0.5rem;
+}
+
+.primary-step-btn:hover {
+    background: rgba(210, 180, 140, 0.25);
+    border-color: #e6c48b;
+    color: #fff2e0;
+    transform: scale(0.98);
+}
+
+/* cake + candles – minimalist modern */
+.ceremony-section {
+    margin: 1.8rem 0 1rem;
+    text-align: center;
+    animation: fadeSlideUp 0.6s ease;
+}
+
+.minimal-cake {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.4rem;
+}
+
+.cake-tier {
+    width: 150px;
+    height: 28px;
+    background: #d9c2a7;
+    border-radius: 20px;
+    box-shadow: 0 6px 0 #b2916e;
+}
+
+.top-tier {
+    width: 100px;
+    height: 35px;
+    background: #eedbbc;
+    border-radius: 30px 30px 20px 20px;
+    margin-top: -8px;
+    box-shadow: 0 4px 0 #c9a77d;
+}
+
+.candles-holder {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+    margin-top: -22px;
+}
+
+.candle-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: default;
+}
+
+.candle-stick {
+    width: 10px;
+    height: 42px;
+    background: #f5ede2;
+    border-radius: 6px 6px 3px 3px;
+    box-shadow: 0 0 0 1px #f0e0ca;
+}
+
+.flame-core {
+    width: 14px;
+    height: 22px;
+    background: radial-gradient(circle, #ffb347, #ff7e33);
+    border-radius: 50% 50% 40% 40%;
+    margin-bottom: 5px;
+    filter: blur(0.6px);
+    animation: flicker 0.8s infinite alternate;
+    box-shadow: 0 0 12px #ffa559;
+}
+
+@keyframes flicker {
+    0% { transform: scale(1); opacity: 0.9; }
+    100% { transform: scale(1.1, 0.95); opacity: 1; background: #ffae5a; }
+}
+
+.blow-invitation {
+    font-size: 1rem;
+    color: #ddd2bc;
+    font-weight: 400;
+    margin: 1rem 0 1.2rem;
+    letter-spacing: 0.3px;
+}
+
+.blow-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-blow, .btn-mic {
+    background: transparent;
+    border: 1px solid #bd9f6e;
+    padding: 0.6rem 1.4rem;
+    border-radius: 3rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #eedbba;
+    cursor: pointer;
+    transition: 0.2s;
+    font-family: 'Inter', sans-serif;
+}
+
+.btn-blow:hover, .btn-mic:hover {
+    background: #bd9f6e22;
+    border-color: #e6c48b;
+    color: white;
+}
+
+.mic-feedback {
+    font-size: 0.7rem;
+    margin-top: 12px;
+    color: #a9946e;
+}
+
+/* FINAL ALTAR — sunrise / emotional */
+.final-altar {
+    text-align: center;
+    padding: 1rem 0 1.5rem;
+    animation: sunriseGlow 1s ease-out;
+}
+
+.sunrise-glow {
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, #f7c56e, #ffaa4a);
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    filter: blur(24px);
+    opacity: 0.6;
+}
+
+.heart-monogram {
+    font-size: 3rem;
+    font-weight: 400;
+    font-family: 'Cormorant Garamond', serif;
+    color: #f2d9ae;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+.final-title {
+    font-size: 2.1rem;
+    font-weight: 500;
+    color: #faeecf;
+    font-family: 'Cormorant Garamond', serif;
+    margin-bottom: 0.8rem;
+}
+
+.final-message {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #cfc3a8;
+    max-width: 280px;
+    margin: 0 auto 1.5rem;
+}
+
+.signature {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    color: #b6a074;
+    border-top: 1px solid rgba(210, 180, 140, 0.4);
+    display: inline-block;
+    padding-top: 12px;
+}
+
+@keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes sunriseGlow {
+    0% { opacity: 0; transform: scale(0.96); filter: brightness(0.7);}
+    100% { opacity: 1; transform: scale(1);}
+}
+
+/* responsive */
+@media (max-width: 550px) {
+    .journey-container {
+        padding: 1.5rem;
+    }
+    .bridge-node {
+        padding: 0.5rem 0.8rem;
+        min-width: 70px;
+    }
+    .bridge-number {
+        font-size: 1.4rem;
+    }
+    .verse-line {
+        font-size: 1.2rem;
+    }
+    .primary-step-btn {
+        padding: 0.7rem 1rem;
+    }
+}
+
+/* hidden utility */
+.hidden {
+    display: none;
+}
+
+/* candle extinguish effect */
+.flame-extinguished {
+    background: #756e5e !important;
+    box-shadow: none !important;
+    animation: none !important;
+    width: 12px;
+    height: 6px;
+    border-radius: 2px;
+    opacity: 0.6;
+}
