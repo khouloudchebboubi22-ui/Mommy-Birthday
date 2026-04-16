@@ -389,30 +389,27 @@
             font-weight: 400;
         }
 
-        .candle-buttons {
-            display: flex;
-            gap: 0.8rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 0.5rem;
-        }
-
-        .candle-action-btn {
-            background: #e8d8d0;
-            border: 1px solid #c08a9a;
-            padding: 0.5rem 1.2rem;
-            border-radius: 2rem;
-            font-size: 0.8rem;
+        /* single candle button */
+        .single-candle-btn {
+            background: #c05a6a;
+            border: none;
+            width: 100%;
+            padding: 0.9rem;
+            font-size: 0.9rem;
             font-weight: 500;
-            color: #8b3a4a;
+            color: white;
+            border-radius: 2.5rem;
             cursor: pointer;
-            transition: 0.2s;
+            transition: all 0.3s;
             font-family: 'Inter', sans-serif;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(192, 90, 106, 0.3);
+            margin-top: 0.8rem;
         }
 
-        .candle-action-btn:hover {
-            background: #d8c8c0;
-            border-color: #b06a7a;
+        .single-candle-btn:hover {
+            background: #a84a5a;
+            transform: translateY(-1px);
         }
 
         /* final celebration */
@@ -532,12 +529,9 @@
                     <div class="cake-tier-bottom"></div>
                     <div class="cake-plate"></div>
                 </div>
-                <div class="candle-instruction" id="candleInstruction">three candles for three wishes. click each one, Iba.</div>
-                <div class="candle-buttons">
-                    <button class="candle-action-btn" id="btnCandle0">extinguish candle 1</button>
-                    <button class="candle-action-btn" id="btnCandle1">extinguish candle 2</button>
-                    <button class="candle-action-btn" id="btnCandle2">extinguish candle 3</button>
-                </div>
+                <div class="candle-instruction" id="candleInstruction">three candles for three wishes. click a candle or use the button below.</div>
+                <!-- single button that extinguishes candles one by one -->
+                <button class="single-candle-btn" id="singleCandleBtn">click here, you forgot the candles</button>
             </div>
         </div>
 
@@ -578,17 +572,12 @@
             const cakeSection = document.getElementById('cakeSection');
             const finalSection = document.getElementById('finalSection');
             const candleInstruction = document.getElementById('candleInstruction');
+            const singleCandleBtn = document.getElementById('singleCandleBtn');
             
             const flames = [
                 document.getElementById('flame0'),
                 document.getElementById('flame1'),
                 document.getElementById('flame2')
-            ];
-            
-            const candleButtons = [
-                document.getElementById('btnCandle0'),
-                document.getElementById('btnCandle1'),
-                document.getElementById('btnCandle2')
             ];
             
             // three letters - emotional, personal, for Iba from Khouloud
@@ -651,60 +640,110 @@
                     finalSection.classList.add('hidden-block');
                     cakeRevealed = true;
                     mainBtn.style.display = 'none';
-                    candleInstruction.innerHTML = "click each candle, or use the buttons below. each flame is a wish for you, Iba.";
+                    candleInstruction.innerHTML = "three candles for three wishes. click a candle or use the button below.";
                 }
             });
             
-            // function to extinguish a specific candle
-            function extinguishCandle(index) {
+            // function to extinguish the next available candle (left to right)
+            let nextCandleToExtinguish = 0;
+            
+            function extinguishNextCandle() {
                 if (!cakeRevealed || allCandlesOut) return;
-                if (candlesLit[index]) {
-                    candlesLit[index] = false;
-                    const flame = flames[index];
-                    if (flame) {
-                        flame.classList.add('flame-extinguished');
-                        flame.style.background = "#9a8a7a";
-                        flame.style.animation = "none";
-                    }
-                    
-                    // update instruction
-                    const remaining = candlesLit.filter(v => v === true).length;
-                    if (remaining === 0) {
-                        candleInstruction.innerHTML = "all candles out. now see your gift, Iba.";
-                        setTimeout(() => {
-                            cakeSection.classList.add('hidden-block');
-                            finalSection.classList.remove('hidden-block');
-                            allCandlesOut = true;
-                        }, 600);
-                    } else {
-                        candleInstruction.innerHTML = `${remaining} candle${remaining > 1 ? 's' : ''} remaining. make a wish for yourself, Iba.`;
-                    }
+                
+                // find the next candle that is still lit
+                while (nextCandleToExtinguish < 3 && !candlesLit[nextCandleToExtinguish]) {
+                    nextCandleToExtinguish++;
                 }
+                
+                if (nextCandleToExtinguish >= 3) {
+                    // all candles are already out
+                    return;
+                }
+                
+                const index = nextCandleToExtinguish;
+                candlesLit[index] = false;
+                const flame = flames[index];
+                if (flame) {
+                    flame.classList.add('flame-extinguished');
+                    flame.style.background = "#9a8a7a";
+                    flame.style.animation = "none";
+                }
+                
+                const remaining = candlesLit.filter(v => v === true).length;
+                
+                if (remaining === 0) {
+                    // all candles are out - show final celebration
+                    candleInstruction.innerHTML = "all candles out. now see your gift, Iba.";
+                    singleCandleBtn.style.display = 'none';
+                    setTimeout(() => {
+                        cakeSection.classList.add('hidden-block');
+                        finalSection.classList.remove('hidden-block');
+                        allCandlesOut = true;
+                    }, 600);
+                } else if (remaining === 2) {
+                    candleInstruction.innerHTML = "first candle out. one wish made. click again for the second candle.";
+                    singleCandleBtn.innerHTML = "click again for the second candle";
+                } else if (remaining === 1) {
+                    candleInstruction.innerHTML = "second candle out. one last candle remains. make a wish, Iba.";
+                    singleCandleBtn.innerHTML = "click one last time and make a wish";
+                }
+                
+                nextCandleToExtinguish++;
             }
             
-            // attach click events to candles (visual elements)
+            // single button click handler
+            if (singleCandleBtn) {
+                singleCandleBtn.addEventListener('click', () => {
+                    if (cakeRevealed && !allCandlesOut) {
+                        extinguishNextCandle();
+                    }
+                });
+            }
+            
+            // also allow clicking directly on candles (optional, but nice)
             const candleUnits = document.querySelectorAll('.candle-unit');
             candleUnits.forEach((unit, idx) => {
                 unit.addEventListener('click', (e) => {
                     e.stopPropagation();
                     if (cakeRevealed && candlesLit[idx] && !allCandlesOut) {
-                        extinguishCandle(idx);
+                        // manually set nextCandleToExtinguish to this index and extinguish
+                        // but we need to maintain order. simpler: just extinguish this specific one
+                        if (candlesLit[idx]) {
+                            candlesLit[idx] = false;
+                            const flame = flames[idx];
+                            if (flame) {
+                                flame.classList.add('flame-extinguished');
+                                flame.style.background = "#9a8a7a";
+                                flame.style.animation = "none";
+                            }
+                            
+                            const remaining = candlesLit.filter(v => v === true).length;
+                            
+                            if (remaining === 0) {
+                                candleInstruction.innerHTML = "all candles out. now see your gift, Iba.";
+                                singleCandleBtn.style.display = 'none';
+                                setTimeout(() => {
+                                    cakeSection.classList.add('hidden-block');
+                                    finalSection.classList.remove('hidden-block');
+                                    allCandlesOut = true;
+                                }, 600);
+                            } else if (remaining === 2) {
+                                candleInstruction.innerHTML = "one candle out. two remain. click the button for the next candle.";
+                                singleCandleBtn.innerHTML = "click here for the next candle";
+                            } else if (remaining === 1) {
+                                candleInstruction.innerHTML = "two candles out. one last candle remains. make a wish, Iba.";
+                                singleCandleBtn.innerHTML = "click one last time and make a wish";
+                            }
+                            
+                            // update nextCandleToExtinguish to skip already extinguished ones
+                            nextCandleToExtinguish = 0;
+                            while (nextCandleToExtinguish < 3 && !candlesLit[nextCandleToExtinguish]) {
+                                nextCandleToExtinguish++;
+                            }
+                        }
                     }
                 });
             });
-            
-            // attach click events to buttons
-            if (candleButtons[0]) {
-                candleButtons[0].addEventListener('click', () => {
-                    if (cakeRevealed && candlesLit[0] && !allCandlesOut) extinguishCandle(0);
-                });
-                candleButtons[1].addEventListener('click', () => {
-                    if (cakeRevealed && candlesLit[1] && !allCandlesOut) extinguishCandle(1);
-                });
-                candleButtons[2].addEventListener('click', () => {
-                    if (cakeRevealed && candlesLit[2] && !allCandlesOut) extinguishCandle(2);
-                });
-            }
             
             // floating petals background
             function createPetals() {
@@ -736,6 +775,7 @@
             cakeRevealed = false;
             allCandlesOut = false;
             candlesLit = [true, true, true];
+            nextCandleToExtinguish = 0;
             
             // reset flame styles initially
             flames.forEach((flame, idx) => {
