@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>For Iba · From Khouloud · A Mystery of Love</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <title>For Iba · From Khouloud · Across the Miles</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,18 +14,18 @@
 
         body {
             min-height: 100vh;
-            background: linear-gradient(145deg, #1a0a0a 0%, #2d1118 50%, #1a0808 100%);
+            background: linear-gradient(145deg, #faf5f0 0%, #f0e6e0 40%, #faf0ea 100%);
             font-family: 'Inter', sans-serif;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1.5rem;
+            padding: 1.2rem;
             position: relative;
             overflow-x: hidden;
         }
 
-        /* romantic floating hearts background */
-        .floating-hearts {
+        /* floating rose petals - subtle */
+        .petals-bg {
             position: fixed;
             top: 0;
             left: 0;
@@ -36,179 +36,240 @@
             overflow: hidden;
         }
 
-        .heart-particle {
+        .petal {
             position: absolute;
-            color: rgba(220, 60, 80, 0.3);
-            font-size: 20px;
-            animation: floatHeart linear infinite;
-            user-select: none;
+            background: radial-gradient(ellipse, #e8a0b0, #c06a7a);
+            border-radius: 150% 0 150% 0;
+            opacity: 0.2;
+            filter: blur(1px);
+            animation: floatPetal linear infinite;
         }
 
-        @keyframes floatHeart {
+        @keyframes floatPetal {
             0% {
                 transform: translateY(100vh) rotate(0deg);
                 opacity: 0;
             }
-            20% { opacity: 0.5; }
-            80% { opacity: 0.5; }
+            15% { opacity: 0.3; }
+            85% { opacity: 0.3; }
             100% {
                 transform: translateY(-20vh) rotate(360deg);
                 opacity: 0;
             }
         }
 
-        /* main envelope container */
-        .mystery-box {
+        /* main container - elegant white/red */
+        .memory-box {
             position: relative;
             z-index: 10;
-            max-width: 550px;
+            max-width: 580px;
             width: 100%;
             background: rgba(255, 250, 245, 0.96);
             backdrop-filter: blur(2px);
             border-radius: 2rem;
             padding: 2rem 1.8rem 2.2rem;
-            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(220, 60, 80, 0.2), 0 0 40px rgba(200, 40, 60, 0.15);
-            transition: all 0.3s ease;
+            border: 1px solid rgba(200, 80, 100, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(200, 70, 90, 0.15);
+            transition: all 0.4s ease;
         }
 
-        /* romantic red accents */
-        .romance-line {
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #cc3355, #ff6680, #cc3355, transparent);
-            width: 80%;
-            margin: 0 auto 1rem;
-        }
-
-        .title-small {
+        /* heartbeat icon - subtle */
+        .heartbeat-icon {
             text-align: center;
-            font-size: 0.75rem;
-            letter-spacing: 3px;
-            color: #aa4466;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            animation: heartbeat 1.6s ease infinite;
         }
 
-        /* letter envelope area */
-        .envelope-area {
-            background: #fff5f0;
-            border-radius: 1.5rem;
-            padding: 1.8rem;
-            margin: 1rem 0;
-            border: 1px solid #ffccdd;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-            transition: all 0.4s;
-            cursor: pointer;
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
         }
 
-        .envelope-seal {
-            text-align: center;
+        .heartbeat-icon span {
             font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            transition: transform 0.3s;
+            display: inline-block;
+            color: #c05a6a;
         }
 
-        .envelope-seal:hover {
-            transform: scale(1.05);
+        /* name and age */
+        .mom-name {
+            text-align: center;
+            font-size: 2.4rem;
+            font-weight: 600;
+            font-family: 'Cormorant Garamond', serif;
+            color: #8b3a4a;
+            letter-spacing: 1px;
+            margin-bottom: 0.25rem;
         }
 
-        .letter-content {
+        .age-number {
+            text-align: center;
+            font-size: 2.8rem;
+            font-weight: 400;
+            font-family: 'Cormorant Garamond', serif;
+            color: #b05a6a;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(180, 70, 90, 0.3);
+            display: inline-block;
+            width: auto;
+            padding: 0 1rem 0.3rem;
+        }
+
+        .age-wrapper {
             text-align: center;
         }
 
-        .letter-message {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #3a1a2a;
-            font-family: 'Playfair Display', serif;
+        /* letter counter / step visual */
+        .steps-visual {
+            display: flex;
+            justify-content: space-between;
+            margin: 1.5rem 0 1.8rem;
+            position: relative;
+        }
+
+        .step-dot {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .dot-circle {
+            width: 44px;
+            height: 44px;
+            background: #f5ede8;
+            border: 2px solid #d48a9a;
+            border-radius: 50%;
+            margin: 0 auto 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #b05a6a;
+            transition: all 0.4s;
+        }
+
+        .step-dot.active .dot-circle {
+            background: #c05a6a;
+            border-color: #e8a0b0;
+            color: white;
+            box-shadow: 0 0 12px rgba(192, 90, 106, 0.4);
+            transform: scale(1.03);
+        }
+
+        .step-dot.completed .dot-circle {
+            background: #e8c0ca;
+            border-color: #d48a9a;
+            color: #8b3a4a;
+        }
+
+        .step-label {
+            font-size: 0.65rem;
+            color: #a06a7a;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
             font-weight: 500;
         }
 
-        .letter-signature {
-            font-size: 0.8rem;
-            color: #cc6688;
-            margin-top: 1rem;
+        .step-connector {
+            position: absolute;
+            top: 22px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #d48a9a, #e8c0ca, #d48a9a);
+            z-index: 1;
+            opacity: 0.5;
+        }
+
+        /* letter area */
+        .letter-area {
+            background: #fffaf7;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 3px solid #c05a6a;
+            min-height: 150px;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        }
+
+        .letter-text {
+            font-size: 1.1rem;
+            line-height: 1.55;
+            color: #3a2a2a;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+        }
+
+        .letter-sub {
+            font-size: 0.75rem;
+            color: #b07a8a;
+            margin-top: 12px;
+            letter-spacing: 0.5px;
             font-style: italic;
         }
 
-        .closed-letter {
-            opacity: 1;
-        }
-
-        .opened-letter {
-            animation: fadeSlide 0.5s ease;
-        }
-
-        @keyframes fadeSlide {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* letter counter */
-        .letter-counter {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin: 1rem 0 0.5rem;
-        }
-
-        .counter-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #eeddcc;
-            border: 1px solid #cc6688;
+        /* primary button */
+        .continue-btn {
+            background: #c05a6a;
+            border: none;
+            width: 100%;
+            padding: 0.9rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: white;
+            border-radius: 2.5rem;
+            cursor: pointer;
             transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(192, 90, 106, 0.3);
+            margin-top: 0.5rem;
         }
 
-        .counter-dot.active {
-            background: #cc3355;
-            box-shadow: 0 0 8px #ff6680;
-            transform: scale(1.2);
+        .continue-btn:hover {
+            background: #a84a5a;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(192, 90, 106, 0.4);
         }
 
-        .counter-dot.read {
-            background: #aa6688;
-        }
-
-        /* realistic cake section */
-        .cake-reveal {
-            margin-top: 1.5rem;
+        /* cake section - realistic */
+        .cake-ritual {
+            margin: 1rem 0;
             text-align: center;
             animation: fadeUp 0.6s ease;
         }
 
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .realistic-cake {
-            position: relative;
+        .cake-real {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 1rem 0;
+            margin-bottom: 1rem;
         }
 
-        /* cake plate */
         .cake-plate {
-            width: 220px;
-            height: 12px;
-            background: radial-gradient(ellipse, #e8ddd0, #c9b59a);
+            width: 210px;
+            height: 10px;
+            background: radial-gradient(ellipse, #e0d0c0, #c8b8a8);
             border-radius: 50%;
-            margin-bottom: -8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            margin-bottom: -5px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
         }
 
-        /* bottom tier */
         .cake-tier-bottom {
-            width: 200px;
-            height: 45px;
-            background: linear-gradient(180deg, #f0ded0, #e8c8b0);
-            border-radius: 15px 15px 8px 8px;
-            box-shadow: 0 8px 0 #c9a27a, 0 5px 15px rgba(0,0,0,0.1);
+            width: 190px;
+            height: 42px;
+            background: linear-gradient(180deg, #f5e0d0, #e8c8b0);
+            border-radius: 14px 14px 8px 8px;
+            box-shadow: 0 6px 0 #c8a888;
             position: relative;
-            overflow: hidden;
         }
 
         .cake-tier-bottom::before {
@@ -217,19 +278,18 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 8px;
-            background: radial-gradient(circle, #ffddbb, #eec9a0);
+            height: 6px;
+            background: radial-gradient(circle, #fff0e0, #f0d0b8);
             border-radius: 8px 8px 0 0;
         }
 
-        /* middle tier */
         .cake-tier-middle {
-            width: 160px;
-            height: 40px;
-            background: linear-gradient(180deg, #f5e4d4, #e8c8b0);
+            width: 150px;
+            height: 38px;
+            background: linear-gradient(180deg, #f7e4d4, #e8c8b0);
             border-radius: 12px 12px 6px 6px;
-            box-shadow: 0 6px 0 #c9a27a;
-            margin-top: -6px;
+            box-shadow: 0 5px 0 #c8a888;
+            margin-top: -5px;
             position: relative;
         }
 
@@ -239,19 +299,18 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 7px;
-            background: radial-gradient(circle, #ffe8cc, #f0d0b0);
+            height: 5px;
+            background: radial-gradient(circle, #fff2e4, #f2d4bc);
             border-radius: 8px 8px 0 0;
         }
 
-        /* top tier */
         .cake-tier-top {
-            width: 120px;
-            height: 38px;
-            background: linear-gradient(180deg, #f7e8d8, #ecc8a8);
+            width: 110px;
+            height: 35px;
+            background: linear-gradient(180deg, #f9e8dc, #ecc8a8);
             border-radius: 10px 10px 5px 5px;
-            box-shadow: 0 5px 0 #c9a27a;
-            margin-top: -5px;
+            box-shadow: 0 4px 0 #c8a888;
+            margin-top: -4px;
             position: relative;
         }
 
@@ -261,21 +320,9 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 6px;
-            background: radial-gradient(circle, #fff0dd, #f2d4b0);
+            height: 5px;
+            background: radial-gradient(circle, #fff6ec, #f4dcc4);
             border-radius: 8px 8px 0 0;
-        }
-
-        /* icing drips */
-        .icing-drip {
-            position: absolute;
-            top: -3px;
-            left: 0;
-            right: 0;
-            height: 12px;
-            background: radial-gradient(ellipse, #fff0e0, #ffe0c8);
-            border-radius: 50%;
-            filter: blur(1px);
         }
 
         /* candles row */
@@ -297,173 +344,175 @@
         }
 
         .candle-unit:hover {
-            transform: translateY(-3px);
+            transform: translateY(-2px);
         }
 
         .candle-stick {
-            width: 12px;
-            height: 48px;
-            background: linear-gradient(180deg, #fff0e8, #f0d8c8);
+            width: 11px;
+            height: 46px;
+            background: linear-gradient(180deg, #f8ede4, #e8d8c8);
             border-radius: 3px 3px 2px 2px;
-            box-shadow: 0 0 0 1px #ddbba0;
+            box-shadow: 0 0 0 1px #d0b8a0;
         }
 
         .candle-flame {
-            width: 18px;
-            height: 26px;
-            background: radial-gradient(circle, #ffaa55, #ff4422);
+            width: 17px;
+            height: 25px;
+            background: radial-gradient(circle, #f5a060, #e06030);
             border-radius: 50% 50% 35% 35%;
             margin-bottom: 5px;
             animation: flickerReal 0.6s infinite alternate;
-            box-shadow: 0 0 12px #ff6644;
+            box-shadow: 0 0 10px #e07040;
             cursor: pointer;
         }
 
         @keyframes flickerReal {
-            0% { transform: scale(1); opacity: 0.9; background: radial-gradient(circle, #ffbb66, #ff5533); }
-            100% { transform: scale(1.08, 0.92); opacity: 1; background: radial-gradient(circle, #ffcc77, #ff6644); }
+            0% { transform: scale(1); opacity: 0.9; background: radial-gradient(circle, #f5b070, #e06838); }
+            100% { transform: scale(1.06, 0.94); opacity: 1; background: radial-gradient(circle, #f8c080, #e87848); }
         }
 
         .flame-extinguished {
-            background: #7a6a5a !important;
+            background: #9a8a7a !important;
             box-shadow: none !important;
             animation: none !important;
-            width: 12px;
-            height: 8px;
+            width: 11px;
+            height: 7px;
             border-radius: 2px;
             margin-bottom: 23px;
         }
 
-        .candle-smoke {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(150, 130, 110, 0.4);
-            border-radius: 50%;
-            animation: smokeRise 1s ease-out forwards;
-            pointer-events: none;
-        }
-
-        @keyframes smokeRise {
-            0% { opacity: 0.6; transform: translateY(0) scale(1); }
-            100% { opacity: 0; transform: translateY(-25px) scale(2.5); }
-        }
-
-        /* instruction text */
         .candle-instruction {
             font-size: 0.8rem;
-            color: #cc6688;
+            color: #b07a8a;
             margin: 1rem 0;
             text-align: center;
+            font-weight: 400;
+        }
+
+        .candle-buttons {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .candle-action-btn {
+            background: #e8d8d0;
+            border: 1px solid #c08a9a;
+            padding: 0.5rem 1.2rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #8b3a4a;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .candle-action-btn:hover {
+            background: #d8c8c0;
+            border-color: #b06a7a;
         }
 
         /* final celebration */
-        .final-love {
+        .final-celebration {
             text-align: center;
             animation: grandReveal 0.8s ease;
         }
 
         @keyframes grandReveal {
-            0% { opacity: 0; transform: scale(0.9); }
+            0% { opacity: 0; transform: scale(0.96); }
             100% { opacity: 1; transform: scale(1); }
         }
 
         .big-heart {
-            font-size: 4rem;
-            animation: heartbeatBig 1.2s infinite;
+            font-size: 3.5rem;
+            animation: pulseSoft 1.4s infinite;
             margin-bottom: 0.5rem;
+            color: #c05a6a;
         }
 
-        @keyframes heartbeatBig {
-            0%, 100% { transform: scale(1); text-shadow: 0 0 5px #ff6680; }
-            50% { transform: scale(1.15); text-shadow: 0 0 20px #ff3355; }
+        @keyframes pulseSoft {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.08); opacity: 1; }
         }
 
-        .nickname-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            font-family: 'Playfair Display', serif;
-            background: linear-gradient(135deg, #cc3355, #ff6680);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        .nickname-final {
+            font-size: 2rem;
+            font-weight: 600;
+            font-family: 'Cormorant Garamond', serif;
+            color: #8b3a4a;
             margin: 0.5rem 0;
         }
 
-        .final-poem {
+        .final-message {
             font-size: 1rem;
             line-height: 1.6;
-            color: #3a1a2a;
+            color: #4a3a3a;
             margin: 1rem 0;
-            font-family: 'Playfair Display', serif;
+            font-family: 'Cormorant Garamond', serif;
         }
 
-        .signature-love {
-            font-size: 0.9rem;
-            color: #cc6688;
-            border-top: 1px solid #ffccdd;
+        .signature-final {
+            font-size: 0.8rem;
+            color: #b07a8a;
+            border-top: 1px solid #e0c8d0;
             display: inline-block;
             padding-top: 0.8rem;
             margin-top: 0.5rem;
         }
 
-        .hidden-area {
+        .hidden-block {
             display: none;
         }
 
-        button {
-            background: linear-gradient(95deg, #cc3355, #ff5577);
-            border: none;
-            padding: 0.8rem 1.8rem;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: white;
-            border-radius: 3rem;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 0.5rem;
-            font-family: 'Inter', sans-serif;
-            transition: all 0.3s;
-        }
-
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(200, 50, 80, 0.4);
-        }
-
         @media (max-width: 500px) {
-            .mystery-box { padding: 1.3rem; }
-            .letter-message { font-size: 0.95rem; }
+            .memory-box { padding: 1.3rem; }
+            .letter-text { font-size: 0.95rem; }
+            .mom-name { font-size: 1.8rem; }
+            .age-number { font-size: 2.2rem; }
         }
     </style>
 </head>
 <body>
-    <div class="floating-hearts" id="heartContainer"></div>
+    <div class="petals-bg" id="petalContainer"></div>
 
-    <div class="mystery-box">
-        <div class="title-small">— a love letter from afar —</div>
-        <div class="romance-line"></div>
+    <div class="memory-box">
+        <div class="heartbeat-icon"><span>❤️</span></div>
+        <div class="mom-name">Iba</div>
+        <div class="age-wrapper"><div class="age-number">48 years of grace</div></div>
 
-        <!-- envelope / letter area -->
-        <div class="envelope-area" id="envelopeArea">
-            <div class="envelope-seal" id="envelopeSeal">💌</div>
-            <div class="letter-content" id="letterContent">
-                <div class="letter-message" id="letterMessage">click to open the first letter...</div>
-                <div class="letter-signature" id="letterSignature">🕯️</div>
+        <!-- letter steps visual -->
+        <div class="steps-visual">
+            <div class="step-dot" id="step1Dot">
+                <div class="dot-circle">1</div>
+                <div class="step-label">LETTER</div>
             </div>
+            <div class="step-dot" id="step2Dot">
+                <div class="dot-circle">2</div>
+                <div class="step-label">LETTER</div>
+            </div>
+            <div class="step-dot" id="step3Dot">
+                <div class="dot-circle">3</div>
+                <div class="step-label">LETTER</div>
+            </div>
+            <div class="step-connector"></div>
         </div>
 
-        <!-- letter counter -->
-        <div class="letter-counter" id="counterContainer">
-            <div class="counter-dot" id="dot1"></div>
-            <div class="counter-dot" id="dot2"></div>
-            <div class="counter-dot" id="dot3"></div>
+        <!-- letter content -->
+        <div class="letter-area" id="letterBox">
+            <div class="letter-text" id="dynamicLetter">A sealed letter awaits you, Iba...</div>
+            <div class="letter-sub" id="dynamicSub">click the button below to open</div>
         </div>
 
-        <!-- hidden: realistic cake + candles -->
-        <div id="cakeSection" class="hidden-area">
-            <div class="cake-reveal">
-                <div class="realistic-cake">
+        <!-- main action button -->
+        <button class="continue-btn" id="mainActionBtn">✧ open letter ✧</button>
+
+        <!-- cake and candles section (hidden initially) -->
+        <div id="cakeSection" class="hidden-block">
+            <div class="cake-ritual">
+                <div class="cake-real">
                     <div class="candles-row" id="candlesRow">
                         <div class="candle-unit" data-candle="0">
                             <div class="candle-flame" id="flame0"></div>
@@ -478,61 +527,56 @@
                             <div class="candle-stick"></div>
                         </div>
                     </div>
-                    <div class="cake-tier-top">
-                        <div class="icing-drip"></div>
-                    </div>
-                    <div class="cake-tier-middle">
-                        <div class="icing-drip"></div>
-                    </div>
-                    <div class="cake-tier-bottom">
-                        <div class="icing-drip"></div>
-                    </div>
+                    <div class="cake-tier-top"></div>
+                    <div class="cake-tier-middle"></div>
+                    <div class="cake-tier-bottom"></div>
                     <div class="cake-plate"></div>
                 </div>
-                <div class="candle-instruction" id="candleInstruction">✨ click each candle, my love ✨<br>one wish per flame</div>
-            </div>
-        </div>
-
-        <!-- final surprise -->
-        <div id="finalSection" class="hidden-area">
-            <div class="final-love">
-                <div class="big-heart">❤️‍🔥❤️‍🔥❤️‍🔥</div>
-                <div class="nickname-title">Iba, my everything</div>
-                <div class="final-poem">
-                    Three letters, three wishes, three flames —<br>
-                    all for you, from across the world.<br>
-                    You are not just my mother, you are my home.<br>
-                    Every candle I blew, I whispered your name.<br>
-                    <strong>Happy 48th birthday, my beautiful Iba.</strong><br>
-                    I love you more than all the stars.
+                <div class="candle-instruction" id="candleInstruction">three candles for three wishes. click each one, Iba.</div>
+                <div class="candle-buttons">
+                    <button class="candle-action-btn" id="btnCandle0">extinguish candle 1</button>
+                    <button class="candle-action-btn" id="btnCandle1">extinguish candle 2</button>
+                    <button class="candle-action-btn" id="btnCandle2">extinguish candle 3</button>
                 </div>
-                <div class="signature-love">from your daughter, Khouloud · always yours</div>
             </div>
         </div>
 
-        <!-- hidden next button after letters -->
-        <button id="nextBtn" style="display: none;">✧ light the cake, mama ✧</button>
+        <!-- final message (hidden initially) -->
+        <div id="finalSection" class="hidden-block">
+            <div class="final-celebration">
+                <div class="big-heart">❤️</div>
+                <div class="nickname-final">Iba, my everything</div>
+                <div class="final-message">
+                    Three letters, three candles, three wishes — all for you.<br>
+                    You are not just my mother, you are my home.<br>
+                    Every word I wrote came from across the miles,<br>
+                    but my heart never left yours.<br>
+                    <strong>Happy 48th birthday, my beautiful Iba.</strong><br>
+                    I love you. Always.
+                </div>
+                <div class="signature-final">from your daughter, Khouloud · forever yours</div>
+            </div>
+        </div>
     </div>
 
     <script>
         (function() {
-            // state
-            let currentLetter = 0;      // 0,1,2,3 (3 means all letters read)
+            // state management
+            let currentLetter = 0;      // 0, 1, 2, 3 (3 = all letters read)
             let candlesLit = [true, true, true];
             let cakeRevealed = false;
             let allCandlesOut = false;
             
             // DOM elements
-            const envelopeArea = document.getElementById('envelopeArea');
-            const letterMessageDiv = document.getElementById('letterMessage');
-            const letterSignatureSpan = document.getElementById('letterSignature');
-            const dot1 = document.getElementById('dot1');
-            const dot2 = document.getElementById('dot2');
-            const dot3 = document.getElementById('dot3');
-            const dots = [dot1, dot2, dot3];
+            const step1Dot = document.getElementById('step1Dot');
+            const step2Dot = document.getElementById('step2Dot');
+            const step3Dot = document.getElementById('step3Dot');
+            const dots = [step1Dot, step2Dot, step3Dot];
+            const letterDiv = document.getElementById('dynamicLetter');
+            const subLetter = document.getElementById('dynamicSub');
+            const mainBtn = document.getElementById('mainActionBtn');
             const cakeSection = document.getElementById('cakeSection');
             const finalSection = document.getElementById('finalSection');
-            const nextBtn = document.getElementById('nextBtn');
             const candleInstruction = document.getElementById('candleInstruction');
             
             const flames = [
@@ -541,176 +585,166 @@
                 document.getElementById('flame2')
             ];
             
-            // beautiful romantic letter content (mysterious, emotional)
+            const candleButtons = [
+                document.getElementById('btnCandle0'),
+                document.getElementById('btnCandle1'),
+                document.getElementById('btnCandle2')
+            ];
+            
+            // three letters - emotional, personal, for Iba from Khouloud
             const letters = [
                 {
-                    msg: "My dearest Iba, the first mystery... Do you remember how I used to hide little notes under your pillow? This is one of them, but digital. I wanted you to feel my hug through the screen. Distance is just a word when love is this strong.",
-                    signature: "— your Khouloud, always near —"
+                    text: "My dearest Iba, the first letter. I still remember the way you would hum while cooking, and I would sit on the kitchen counter just to be near you. Distance has never once made me love you less. It only made me realize how lucky I am to call you my mother.",
+                    sub: "— letter one of three —"
                 },
                 {
-                    msg: "The second secret: I close my eyes and I see you smiling in the kitchen. The smell of your perfume. The way you say my name. Mama, every success I have is because you believed in me first. You are my roots, my wings, my peace.",
-                    signature: "❤️ from across the ocean but right next to your heart ❤️"
+                    text: "The second letter. You taught me kindness when no one was watching. You showed me strength when life was hard. I carry your voice with me everywhere — in every decision, every quiet moment, every small victory. You are my compass, Iba.",
+                    sub: "— letter two of three —"
                 },
                 {
-                    msg: "The last letter before the candles... Iba, you are 48 today. Forty-eight years of grace, strength, and unconditional love. I am who I am because of you. Tonight, make a wish for yourself — you deserve the universe. Now, let's light your birthday cake together.",
-                    signature: "with tears of love, Khouloud"
+                    text: "The last letter before your cake. You are 48 today. Forty-eight years of being the most beautiful soul I know. I wish I could bake you a cake with my own hands, but I built this for you instead — from my heart to yours. Now let me light your candles, mama.",
+                    sub: "— open your cake, Iba —"
                 }
             ];
             
-            function updateLetterCounter() {
-                for (let i = 0; i < dots.length; i++) {
-                    dots[i].classList.remove('active', 'read');
-                    if (i < currentLetter) {
-                        dots[i].classList.add('read');
-                    } else if (i === currentLetter && currentLetter < 3) {
-                        dots[i].classList.add('active');
+            function updateDots() {
+                dots.forEach((dot, idx) => {
+                    dot.classList.remove('active', 'completed');
+                    if (idx < currentLetter) {
+                        dot.classList.add('completed');
+                    } else if (idx === currentLetter && currentLetter < 3) {
+                        dot.classList.add('active');
                     }
-                }
+                });
             }
             
             function openNextLetter() {
                 if (currentLetter < 3) {
-                    // show letter content
                     const letterData = letters[currentLetter];
-                    letterMessageDiv.innerHTML = letterData.msg;
-                    letterSignatureSpan.innerHTML = letterData.signature;
-                    letterMessageDiv.classList.add('opened-letter');
-                    setTimeout(() => letterMessageDiv.classList.remove('opened-letter'), 500);
+                    letterDiv.innerHTML = letterData.text;
+                    subLetter.innerHTML = letterData.sub;
                     
-                    // change envelope seal emotion
-                    const seal = document.getElementById('envelopeSeal');
-                    if (currentLetter === 0) seal.innerHTML = "📜";
-                    else if (currentLetter === 1) seal.innerHTML = "💝";
-                    else if (currentLetter === 2) seal.innerHTML = "🎂";
+                    // add subtle animation
+                    letterDiv.style.animation = 'none';
+                    setTimeout(() => { letterDiv.style.animation = 'fadeUp 0.4s ease'; }, 10);
                     
                     currentLetter++;
-                    updateLetterCounter();
+                    updateDots();
                     
-                    // after third letter, show next button
+                    // update button text based on progress
                     if (currentLetter === 3) {
-                        setTimeout(() => {
-                            letterMessageDiv.innerHTML = "✨ You've read all my letters, mama. ✨<br>Now, let me give you your cake...";
-                            letterSignatureSpan.innerHTML = "click below, Iba 💋";
-                            nextBtn.style.display = 'block';
-                            envelopeArea.style.cursor = 'default';
-                        }, 300);
+                        mainBtn.innerHTML = "✧ light the birthday cake ✧";
+                        subLetter.innerHTML = "your candles are waiting, Iba";
                     } else {
-                        // ready for next click on envelope
-                        envelopeArea.style.cursor = 'pointer';
+                        mainBtn.innerHTML = "✧ open next letter ✧";
                     }
                 }
             }
             
-            // envelope click
-            envelopeArea.addEventListener('click', () => {
+            // main button: open letters or reveal cake
+            mainBtn.addEventListener('click', () => {
                 if (currentLetter < 3) {
                     openNextLetter();
-                }
-            });
-            
-            // next button: reveal cake
-            nextBtn.addEventListener('click', () => {
-                if (currentLetter === 3 && !cakeRevealed) {
-                    cakeSection.classList.remove('hidden-area');
-                    finalSection.classList.add('hidden-area');
+                } else if (currentLetter === 3 && !cakeRevealed && !allCandlesOut) {
+                    // reveal cake section
+                    cakeSection.classList.remove('hidden-block');
+                    finalSection.classList.add('hidden-block');
                     cakeRevealed = true;
-                    nextBtn.style.display = 'none';
-                    envelopeArea.style.display = 'none';
-                    document.querySelector('.letter-counter').style.display = 'none';
-                    candleInstruction.innerHTML = "🌸 click each candle, Iba · one by one, with love 🌸<br>each flame is a kiss from khouloud";
+                    mainBtn.style.display = 'none';
+                    candleInstruction.innerHTML = "click each candle, or use the buttons below. each flame is a wish for you, Iba.";
                 }
             });
             
-            // helper: create smoke effect
-            function createSmoke(x, y, container) {
-                const smoke = document.createElement('div');
-                smoke.className = 'candle-smoke';
-                smoke.style.left = x + 'px';
-                smoke.style.top = y + 'px';
-                smoke.style.position = 'absolute';
-                container.appendChild(smoke);
-                setTimeout(() => smoke.remove(), 1000);
-            }
-            
-            // blow out a single candle
-            function blowCandle(index) {
-                if (!cakeRevealed) return;
-                if (index >= 0 && index < flames.length && candlesLit[index]) {
+            // function to extinguish a specific candle
+            function extinguishCandle(index) {
+                if (!cakeRevealed || allCandlesOut) return;
+                if (candlesLit[index]) {
                     candlesLit[index] = false;
                     const flame = flames[index];
                     if (flame) {
-                        // get position for smoke
-                        const rect = flame.getBoundingClientRect();
-                        const cakeContainer = document.querySelector('.realistic-cake');
-                        const containerRect = cakeContainer.getBoundingClientRect();
-                        const smokeX = rect.left - containerRect.left + rect.width/2;
-                        const smokeY = rect.top - containerRect.top + rect.height/2;
-                        createSmoke(smokeX, smokeY, cakeContainer);
-                        
                         flame.classList.add('flame-extinguished');
-                        flame.style.background = "#7a6a5a";
+                        flame.style.background = "#9a8a7a";
                         flame.style.animation = "none";
                     }
                     
-                    // update instruction message
+                    // update instruction
                     const remaining = candlesLit.filter(v => v === true).length;
                     if (remaining === 0) {
-                        candleInstruction.innerHTML = "✨ all wishes made... now see your gift, Iba ✨";
+                        candleInstruction.innerHTML = "all candles out. now see your gift, Iba.";
                         setTimeout(() => {
-                            // show final celebration
-                            cakeSection.classList.add('hidden-area');
-                            finalSection.classList.remove('hidden-area');
+                            cakeSection.classList.add('hidden-block');
+                            finalSection.classList.remove('hidden-block');
                             allCandlesOut = true;
-                        }, 800);
+                        }, 600);
                     } else {
-                        candleInstruction.innerHTML = `💖 ${remaining} flame${remaining > 1 ? 's' : ''} left · make a wish for yourself, mama 💖`;
+                        candleInstruction.innerHTML = `${remaining} candle${remaining > 1 ? 's' : ''} remaining. make a wish for yourself, Iba.`;
                     }
                 }
             }
             
-            // add click listeners to each candle unit
+            // attach click events to candles (visual elements)
             const candleUnits = document.querySelectorAll('.candle-unit');
             candleUnits.forEach((unit, idx) => {
                 unit.addEventListener('click', (e) => {
                     e.stopPropagation();
                     if (cakeRevealed && candlesLit[idx] && !allCandlesOut) {
-                        blowCandle(idx);
+                        extinguishCandle(idx);
                     }
                 });
             });
             
-            // floating hearts background
-            function createHearts() {
-                const container = document.getElementById('heartContainer');
-                const heartSymbols = ['❤️', '💖', '💗', '💓', '💕', '💘'];
+            // attach click events to buttons
+            if (candleButtons[0]) {
+                candleButtons[0].addEventListener('click', () => {
+                    if (cakeRevealed && candlesLit[0] && !allCandlesOut) extinguishCandle(0);
+                });
+                candleButtons[1].addEventListener('click', () => {
+                    if (cakeRevealed && candlesLit[1] && !allCandlesOut) extinguishCandle(1);
+                });
+                candleButtons[2].addEventListener('click', () => {
+                    if (cakeRevealed && candlesLit[2] && !allCandlesOut) extinguishCandle(2);
+                });
+            }
+            
+            // floating petals background
+            function createPetals() {
+                const container = document.getElementById('petalContainer');
                 for (let i = 0; i < 55; i++) {
-                    const heart = document.createElement('div');
-                    heart.classList.add('heart-particle');
-                    heart.innerHTML = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
-                    heart.style.left = Math.random() * 100 + '%';
-                    heart.style.fontSize = (Math.random() * 18 + 12) + 'px';
-                    heart.style.animationDuration = Math.random() * 10 + 7 + 's';
-                    heart.style.animationDelay = Math.random() * 15 + 's';
-                    heart.style.opacity = Math.random() * 0.4 + 0.15;
-                    container.appendChild(heart);
+                    const petal = document.createElement('div');
+                    petal.classList.add('petal');
+                    const size = Math.random() * 8 + 3;
+                    petal.style.width = size + 'px';
+                    petal.style.height = size * 0.7 + 'px';
+                    petal.style.left = Math.random() * 100 + '%';
+                    petal.style.animationDuration = Math.random() * 12 + 7 + 's';
+                    petal.style.animationDelay = Math.random() * 15 + 's';
+                    petal.style.background = `radial-gradient(ellipse, #e8a0b0, #c06a7a)`;
+                    petal.style.opacity = Math.random() * 0.25 + 0.1;
+                    container.appendChild(petal);
                 }
             }
-            createHearts();
+            createPetals();
             
-            // initial state: first letter ready
+            // initial state
             currentLetter = 0;
-            updateLetterCounter();
-            letterMessageDiv.innerHTML = "💌 a mystery awaits you, Iba... click the envelope 💌";
-            letterSignatureSpan.innerHTML = "from Khouloud, with love";
-            envelopeArea.style.cursor = 'pointer';
-            cakeSection.classList.add('hidden-area');
-            finalSection.classList.add('hidden-area');
-            nextBtn.style.display = 'none';
-            document.querySelector('.letter-counter').style.display = 'flex';
-            envelopeArea.style.display = 'block';
+            updateDots();
+            letterDiv.innerHTML = "A sealed letter awaits you, Iba...";
+            subLetter.innerHTML = "click the button below to open";
+            cakeSection.classList.add('hidden-block');
+            finalSection.classList.add('hidden-block');
+            mainBtn.style.display = 'block';
+            cakeRevealed = false;
+            allCandlesOut = false;
+            candlesLit = [true, true, true];
             
-            // extra romantic touch: change title dynamically
-            document.title = "For Iba · From Khouloud 💋";
+            // reset flame styles initially
+            flames.forEach((flame, idx) => {
+                if (flame) {
+                    flame.classList.remove('flame-extinguished');
+                    flame.style.background = "radial-gradient(circle, #f5a060, #e06030)";
+                    flame.style.animation = "flickerReal 0.6s infinite alternate";
+                }
+            });
         })();
     </script>
 </body>
