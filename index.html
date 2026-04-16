@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Wahiba · 48 · Birthday Bridge</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <title>For You, Mama Wahiba · 48 · From Across the Miles</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,18 +14,19 @@
 
         body {
             min-height: 100vh;
-            background: linear-gradient(135deg, #0a0000 0%, #1a0000 50%, #0a0000 100%);
+            background: linear-gradient(145deg, #0a0005 0%, #1a0208 40%, #0a0005 100%);
             font-family: 'Inter', sans-serif;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1.5rem;
+            padding: 1.2rem;
             position: relative;
             overflow-x: hidden;
+            cursor: pointer;
         }
 
-        /* animated particles background */
-        .particles-bg {
+        /* animated background - floating rose petals effect */
+        .petals-bg {
             position: fixed;
             top: 0;
             left: 0;
@@ -33,703 +34,658 @@
             height: 100%;
             pointer-events: none;
             z-index: 0;
+            overflow: hidden;
         }
 
-        .particle {
+        .petal {
             position: absolute;
-            background: radial-gradient(circle, #ff4444, #cc0000);
-            border-radius: 50%;
-            opacity: 0.4;
-            animation: floatParticle linear infinite;
+            background: radial-gradient(ellipse, #ff3366, #990022);
+            border-radius: 150% 0 150% 0;
+            opacity: 0.25;
+            filter: blur(1px);
+            animation: floatPetal linear infinite;
         }
 
-        @keyframes floatParticle {
+        @keyframes floatPetal {
             0% {
                 transform: translateY(100vh) rotate(0deg);
                 opacity: 0;
             }
-            10% {
-                opacity: 0.5;
-            }
-            90% {
-                opacity: 0.5;
-            }
+            15% { opacity: 0.4; }
+            85% { opacity: 0.4; }
             100% {
                 transform: translateY(-20vh) rotate(360deg);
                 opacity: 0;
             }
         }
 
-        /* main container */
-        .journey-card {
+        /* main container - elegant glassmorphism */
+        .memory-box {
             position: relative;
             z-index: 10;
-            max-width: 650px;
+            max-width: 580px;
             width: 100%;
-            background: rgba(10, 0, 0, 0.85);
-            backdrop-filter: blur(16px);
-            border-radius: 2rem;
-            padding: 2rem 1.8rem 2.5rem;
-            border: 1px solid rgba(220, 60, 60, 0.4);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 68, 68, 0.1), 0 0 30px rgba(220, 40, 40, 0.2);
-            transition: all 0.3s ease;
+            background: rgba(10, 3, 8, 0.82);
+            backdrop-filter: blur(20px);
+            border-radius: 2.5rem;
+            padding: 2rem 1.8rem 2.2rem;
+            border: 1px solid rgba(255, 80, 120, 0.35);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 100, 130, 0.15), 0 0 45px rgba(220, 40, 80, 0.25);
+            transition: all 0.4s ease;
         }
 
-        /* bridge arc */
-        .bridge-arc {
+        /* heartbeat icon */
+        .heartbeat-icon {
+            text-align: center;
+            margin-bottom: 1rem;
+            animation: heartbeat 1.4s ease infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.12); text-shadow: 0 0 12px #ff3366; }
+        }
+
+        .heartbeat-icon span {
+            font-size: 3rem;
+            display: inline-block;
+        }
+
+        /* name and age */
+        .mom-name {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 600;
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(135deg, #ffb6c7, #ff6b8a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+            margin-bottom: 0.25rem;
+        }
+
+        .age-number {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 400;
+            font-family: 'Cormorant Garamond', serif;
+            color: #ff8899;
+            margin-bottom: 1.2rem;
+            border-bottom: 1px dashed rgba(255, 100, 130, 0.5);
+            display: inline-block;
+            width: auto;
+            padding: 0 1rem 0.5rem;
+        }
+
+        .age-wrapper {
+            text-align: center;
+        }
+
+        /* step counter visual */
+        .steps-visual {
+            display: flex;
+            justify-content: space-between;
+            margin: 1.8rem 0 2rem;
+            position: relative;
+        }
+
+        .step-dot {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .dot-circle {
+            width: 48px;
+            height: 48px;
+            background: rgba(30, 10, 20, 0.8);
+            border: 2px solid #ff5577;
+            border-radius: 50%;
+            margin: 0 auto 0.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
-            margin-bottom: 2.5rem;
-            flex-wrap: wrap;
-        }
-
-        .bridge-pillar {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: rgba(30, 0, 0, 0.7);
-            border-radius: 1.5rem;
-            padding: 0.9rem 1.2rem;
-            min-width: 85px;
-            border: 1px solid rgba(220, 60, 60, 0.4);
-            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            cursor: pointer;
-        }
-
-        .bridge-pillar.completed {
-            border-color: #ff4444;
-            box-shadow: 0 0 20px rgba(255, 68, 68, 0.4);
-            background: rgba(80, 20, 20, 0.7);
-        }
-
-        .bridge-pillar.active {
-            border-color: #ff6666;
-            box-shadow: 0 0 30px rgba(255, 68, 68, 0.6);
-            transform: scale(1.02);
-        }
-
-        .pillar-number {
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             font-weight: 600;
-            font-family: 'Playfair Display', serif;
-            color: #ff6666;
+            color: #ff99aa;
+            transition: all 0.4s;
         }
 
-        .pillar-label {
-            font-size: 0.65rem;
+        .step-dot.active .dot-circle {
+            background: #ff3366;
+            border-color: #ffccdd;
+            color: white;
+            box-shadow: 0 0 20px #ff3366;
+            transform: scale(1.05);
+        }
+
+        .step-dot.completed .dot-circle {
+            background: #882244;
+            border-color: #ff8899;
+            color: #ffccdd;
+        }
+
+        .step-label {
+            font-size: 0.7rem;
+            color: #dd99aa;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #cc9999;
-            margin-top: 5px;
+            letter-spacing: 1px;
         }
 
-        .bridge-line {
-            width: 40px;
+        .step-connector {
+            position: absolute;
+            top: 24px;
+            left: 0;
+            right: 0;
             height: 2px;
-            background: linear-gradient(90deg, #ff4444, #ff8888);
-            opacity: 0.5;
+            background: linear-gradient(90deg, #ff5577, #ff99aa, #ff5577);
+            z-index: 1;
+            opacity: 0.4;
         }
 
-        /* message panel */
-        .message-panel {
-            background: rgba(20, 0, 0, 0.6);
-            border-radius: 1.5rem;
-            padding: 1.8rem 1.2rem;
-            text-align: center;
-            margin: 1rem 0 2rem;
-            border-left: 3px solid #ff4444;
+        /* message area */
+        .letter-area {
+            background: rgba(40, 12, 25, 0.6);
+            border-radius: 1.8rem;
+            padding: 1.5rem;
+            margin: 1.2rem 0;
+            border-left: 4px solid #ff6680;
+            min-height: 140px;
             transition: all 0.3s;
         }
 
-        .message-main {
-            font-size: 1.6rem;
+        .letter-text {
+            font-size: 1.2rem;
+            line-height: 1.5;
+            color: #ffe0e6;
+            font-family: 'Cormorant Garamond', serif;
             font-weight: 500;
-            font-family: 'Playfair Display', serif;
-            color: #ffcccc;
-            line-height: 1.4;
         }
 
-        .message-sub {
-            font-size: 0.85rem;
-            color: #cc8888;
+        .letter-sub {
+            font-size: 0.8rem;
+            color: #dd99aa;
             margin-top: 12px;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         /* primary button */
-        .step-button {
-            background: linear-gradient(135deg, #8b0000, #cc0000);
+        .continue-btn {
+            background: linear-gradient(95deg, #aa2244, #dd3355);
             border: none;
-            padding: 1rem 2rem;
+            width: 100%;
+            padding: 1rem;
             font-size: 1rem;
             font-weight: 600;
-            color: #fff0f0;
+            color: #fff0f2;
             border-radius: 3rem;
             cursor: pointer;
             transition: all 0.3s;
-            width: 100%;
             font-family: 'Inter', sans-serif;
             letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(200, 0, 0, 0.4);
+            box-shadow: 0 5px 20px rgba(200, 30, 70, 0.5);
+            margin-top: 0.5rem;
         }
 
-        .step-button:hover {
-            background: linear-gradient(135deg, #aa0000, #ff2222);
+        .continue-btn:hover {
+            background: linear-gradient(95deg, #cc3355, #ff5577);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 0, 0, 0.5);
+            box-shadow: 0 10px 30px rgba(255, 50, 100, 0.6);
         }
 
-        .step-button:active {
-            transform: translateY(1px);
-        }
-
-        /* cake & candles */
-        .candle-ceremony {
-            margin: 1.5rem 0 1rem;
+        /* candle section */
+        .candle-ritual {
+            margin: 1rem 0;
             text-align: center;
-            animation: fadeRise 0.7s ease;
+            animation: fadeUp 0.6s ease;
         }
 
-        @keyframes fadeRise {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .cake-art {
-            position: relative;
+        .cake-mini {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
-        .cake-bottom {
-            width: 160px;
+        .cake-base-layer {
+            width: 170px;
             height: 30px;
-            background: #2a0a0a;
-            border-radius: 20px;
-            box-shadow: 0 6px 0 #1a0303;
-            border: 1px solid #cc4444;
+            background: #3a1520;
+            border-radius: 40px;
+            box-shadow: 0 6px 0 #1f080f;
+            border: 1px solid #ff6680;
         }
 
-        .cake-middle {
-            width: 120px;
-            height: 35px;
-            background: #3a1212;
-            border-radius: 30px 30px 20px 20px;
+        .cake-upper {
+            width: 130px;
+            height: 38px;
+            background: #4e1a2a;
+            border-radius: 50px 50px 30px 30px;
             margin-top: -10px;
-            box-shadow: 0 4px 0 #2a0808;
-            border: 1px solid #dd5555;
+            border: 1px solid #ff7788;
         }
 
-        .candles-row {
+        .candle-set {
             display: flex;
-            gap: 1.5rem;
+            gap: 1.3rem;
             justify-content: center;
-            margin-top: -25px;
+            margin-top: -28px;
         }
 
-        .candle-unit {
+        .candle-item {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        .candle-stem {
-            width: 12px;
-            height: 48px;
-            background: linear-gradient(180deg, #f5e6d3, #e8d5bc);
-            border-radius: 4px 4px 3px 3px;
-            box-shadow: 0 0 0 1px #ccaa88;
+        .flame-glow {
+            width: 18px;
+            height: 26px;
+            background: radial-gradient(circle, #ffaa55, #ff4422);
+            border-radius: 50% 50% 35% 35%;
+            margin-bottom: 5px;
+            animation: dance 0.5s infinite alternate;
+            box-shadow: 0 0 14px #ff6644;
         }
 
-        .candle-flame {
-            width: 16px;
-            height: 24px;
-            background: radial-gradient(circle, #ff6644, #ff2200);
-            border-radius: 50% 50% 40% 40%;
-            margin-bottom: 6px;
-            animation: flickerSoft 0.7s infinite alternate;
-            box-shadow: 0 0 12px #ff4422;
-        }
-
-        @keyframes flickerSoft {
-            0% {
-                transform: scale(1);
-                opacity: 0.9;
-                background: radial-gradient(circle, #ff7744, #ff3300);
-            }
-            100% {
-                transform: scale(1.12, 0.92);
-                opacity: 1;
-                background: radial-gradient(circle, #ff9955, #ff4411);
-            }
+        @keyframes dance {
+            0% { transform: scale(1) translateY(0px); opacity: 0.9; }
+            100% { transform: scale(1.1, 0.9) translateY(-2px); opacity: 1; background: #ff8844; }
         }
 
         .flame-out {
-            background: #4a3a2a !important;
+            background: #5a3a2a !important;
             box-shadow: none !important;
             animation: none !important;
             width: 12px;
-            height: 6px;
-            border-radius: 2px;
-            margin-bottom: 20px;
+            height: 7px;
+            border-radius: 3px;
+            margin-bottom: 24px;
         }
 
-        .blow-text {
+        .wish-text {
             font-size: 1rem;
-            color: #ffaaaa;
-            margin: 1.2rem 0;
+            color: #ffbbcc;
+            margin: 1rem 0;
             font-weight: 400;
         }
 
-        .blow-buttons-group {
+        .blow-group {
             display: flex;
-            gap: 1rem;
+            gap: 0.8rem;
             justify-content: center;
             flex-wrap: wrap;
         }
 
-        .btn-blow-action {
-            background: rgba(139, 0, 0, 0.6);
-            border: 1px solid #ff5555;
-            padding: 0.7rem 1.5rem;
-            border-radius: 3rem;
+        .blow-btn {
+            background: rgba(170, 34, 68, 0.7);
+            border: 1px solid #ff7788;
+            padding: 0.6rem 1.2rem;
+            border-radius: 2rem;
             font-size: 0.85rem;
             font-weight: 500;
-            color: #ffdddd;
+            color: #ffe0e6;
             cursor: pointer;
             transition: 0.2s;
         }
 
-        .btn-blow-action:hover {
-            background: #cc1111;
-            border-color: #ff8888;
-            transform: scale(0.98);
+        .blow-btn:hover {
+            background: #dd3355;
+            transform: scale(0.97);
         }
 
-        .mic-status-msg {
-            font-size: 0.7rem;
-            margin-top: 12px;
-            color: #cc8888;
-        }
-
-        /* final celebration */
-        .final-celebration {
+        /* final explosion of love */
+        .final-explosion {
             text-align: center;
-            padding: 1rem 0;
-            animation: glowSunrise 1s ease-out;
+            animation: grandEntrance 0.9s cubic-bezier(0.2, 1.2, 0.4, 1);
         }
 
-        @keyframes glowSunrise {
-            0% {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
+        @keyframes grandEntrance {
+            0% { opacity: 0; transform: scale(0.8) rotate(-5deg); }
+            100% { opacity: 1; transform: scale(1) rotate(0); }
         }
 
-        .red-heart {
-            width: 90px;
-            height: 90px;
-            background: radial-gradient(circle, #ff3355, #cc0000);
-            margin: 0 auto 1rem;
-            border-radius: 50%;
-            filter: blur(20px);
-            opacity: 0.7;
-            animation: pulseHeart 1.5s infinite;
+        .giant-heart {
+            font-size: 4.5rem;
+            animation: pulseBig 1s infinite;
+            margin-bottom: 0.5rem;
         }
 
-        @keyframes pulseHeart {
-            0%, 100% {
-                transform: scale(1);
-                opacity: 0.5;
-            }
-            50% {
-                transform: scale(1.2);
-                opacity: 0.8;
-            }
+        @keyframes pulseBig {
+            0%, 100% { transform: scale(1); text-shadow: 0 0 10px #ff3366; }
+            50% { transform: scale(1.15); text-shadow: 0 0 30px #ff6680; }
         }
 
-        .age-badge {
-            font-size: 2.8rem;
-            font-weight: 600;
-            font-family: 'Playfair Display', serif;
-            color: #ff6666;
-            margin-bottom: 0.8rem;
+        .final-name-highlight {
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ff99aa, #ff4466);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0.5rem 0;
         }
 
-        .final-title-big {
-            font-size: 2rem;
-            font-weight: 600;
-            color: #ffdddd;
-            font-family: 'Playfair Display', serif;
-            margin-bottom: 1rem;
-        }
-
-        .final-message-love {
+        .final-message-long {
             font-size: 1rem;
             line-height: 1.6;
-            color: #ddbbbb;
-            max-width: 280px;
-            margin: 0 auto 1.5rem;
+            color: #ffccd5;
+            margin: 1rem 0;
+            font-family: 'Cormorant Garamond', serif;
         }
 
-        .signature-line {
-            font-size: 0.75rem;
-            color: #aa7777;
-            border-top: 1px solid #cc5555;
+        .signature-mom {
+            font-size: 0.85rem;
+            color: #dd99aa;
+            border-top: 1px solid #ff6680;
             display: inline-block;
-            padding-top: 10px;
+            padding-top: 0.8rem;
+            margin-top: 0.5rem;
         }
 
-        /* responsive */
-        @media (max-width: 550px) {
-            .journey-card {
-                padding: 1.5rem;
-            }
-            .pillar-number {
-                font-size: 1.4rem;
-            }
-            .message-main {
-                font-size: 1.3rem;
-            }
-        }
-
-        .hidden-section {
+        .hidden-block {
             display: none;
+        }
+
+        @media (max-width: 500px) {
+            .memory-box { padding: 1.5rem; }
+            .letter-text { font-size: 1rem; }
+            .mom-name { font-size: 1.7rem; }
         }
     </style>
 </head>
 <body>
-    <div class="particles-bg" id="particlesBg"></div>
+    <div class="petals-bg" id="petalContainer"></div>
 
-    <div class="journey-card">
-        <!-- bridge visual -->
-        <div class="bridge-arc">
-            <div class="bridge-pillar" id="pillar1">
-                <div class="pillar-number">I</div>
-                <div class="pillar-label">DISTANCE</div>
+    <div class="memory-box">
+        <div class="heartbeat-icon"><span>❤️</span></div>
+        <div class="mom-name">Wahiba</div>
+        <div class="age-wrapper"><div class="age-number">48 springs · 48 wonders</div></div>
+
+        <!-- step visual -->
+        <div class="steps-visual">
+            <div class="step-dot" id="step1Dot">
+                <div class="dot-circle">1</div>
+                <div class="step-label">REMEMBER</div>
             </div>
-            <div class="bridge-line"></div>
-            <div class="bridge-pillar" id="pillar2">
-                <div class="pillar-number">II</div>
-                <div class="pillar-label">MEMORY</div>
+            <div class="step-dot" id="step2Dot">
+                <div class="dot-circle">2</div>
+                <div class="step-label">FEEL</div>
             </div>
-            <div class="bridge-line"></div>
-            <div class="bridge-pillar" id="pillar3">
-                <div class="pillar-number">III</div>
-                <div class="pillar-label">HOME</div>
+            <div class="step-dot" id="step3Dot">
+                <div class="dot-circle">3</div>
+                <div class="step-label">CELEBRATE</div>
             </div>
+            <div class="step-connector"></div>
         </div>
 
-        <!-- dynamic message -->
-        <div class="message-panel">
-            <div class="message-main" id="mainMessage">every mile is just a number</div>
-            <div class="message-sub" id="subMessage">— step forward, mom —</div>
+        <!-- dynamic letter content -->
+        <div class="letter-area" id="letterBox">
+            <div class="letter-text" id="dynamicLetter">"I still remember your hugs before boarding the plane..."</div>
+            <div class="letter-sub" id="dynamicSub">— click below, mama —</div>
         </div>
 
-        <!-- step button -->
-        <button class="step-button" id="stepBtn">🌹 cross bridge → 🌹</button>
+        <!-- main action button -->
+        <button class="continue-btn" id="mainActionBtn">✧ continue, mama ✧</button>
 
-        <!-- candle ceremony (hidden initially) -->
-        <div id="candleZone" style="display: none;">
-            <div class="candle-ceremony">
-                <div class="cake-art">
-                    <div class="cake-bottom"></div>
-                    <div class="cake-middle"></div>
-                    <div class="candles-row">
-                        <div class="candle-unit" data-candle="0">
-                            <div class="candle-flame" id="flame0"></div>
-                            <div class="candle-stem"></div>
-                        </div>
-                        <div class="candle-unit" data-candle="1">
-                            <div class="candle-flame" id="flame1"></div>
-                            <div class="candle-stem"></div>
-                        </div>
-                        <div class="candle-unit" data-candle="2">
-                            <div class="candle-flame" id="flame2"></div>
-                            <div class="candle-stem"></div>
-                        </div>
+        <!-- candle section (hidden) -->
+        <div id="candleRitualDiv" class="hidden-block">
+            <div class="candle-ritual">
+                <div class="cake-mini">
+                    <div class="cake-base-layer"></div>
+                    <div class="cake-upper"></div>
+                    <div class="candle-set">
+                        <div class="candle-item"><div class="flame-glow" id="flameCandle1"></div><div class="candle-stick" style="width:8px; height:40px; background:#f3e0cd;"></div></div>
+                        <div class="candle-item"><div class="flame-glow" id="flameCandle2"></div><div class="candle-stick" style="width:8px; height:40px; background:#f3e0cd;"></div></div>
+                        <div class="candle-item"><div class="flame-glow" id="flameCandle3"></div><div class="candle-stick" style="width:8px; height:40px; background:#f3e0cd;"></div></div>
                     </div>
                 </div>
-                <div class="blow-text">✨ make a wish, Wahiba · you are 48 ✨</div>
-                <div class="blow-buttons-group">
-                    <button class="btn-blow-action" id="clickBlowBtn">💨 blow (click)</button>
-                    <button class="btn-blow-action" id="micBlowBtn">🎤 blow with mic</button>
+                <div class="wish-text">✨ make a wish, Wahiba · you are 48 ✨<br>💫 blow and feel me next to you 💫</div>
+                <div class="blow-group">
+                    <button class="blow-btn" id="clickBlowFinal">💨 blow (touch)</button>
+                    <button class="blow-btn" id="micBlowFinal">🎤 blow with voice</button>
                 </div>
-                <div class="mic-status-msg" id="micStatusMsg"></div>
+                <div id="micStatusMsg" style="font-size:0.7rem; margin-top:10px; color:#dd99aa;"></div>
             </div>
         </div>
 
-        <!-- final celebration (hidden) -->
-        <div id="finalZone" style="display: none;">
-            <div class="final-celebration">
-                <div class="red-heart"></div>
-                <div class="age-badge">⟡ 48 ⟡</div>
-                <div class="final-title-big">happy birthday, Wahiba</div>
-                <div class="final-message-love">you are my anchor, my sky, my home.<br>no distance can ever separate us.</div>
-                <div class="signature-line">with endless love, from across the miles</div>
+        <!-- final unforgettable moment -->
+        <div id="finalSurpriseDiv" class="hidden-block">
+            <div class="final-explosion">
+                <div class="giant-heart">❤️‍🔥❤️‍🔥❤️‍🔥</div>
+                <div class="final-name-highlight">Wahiba, my everything</div>
+                <div class="final-message-long">
+                    I wish I could be there to hug you today.<br>
+                    But look — I lit these candles for you from across the world.<br>
+                    Every flame is a kiss. Every spark is "I love you, mom."<br>
+                    You are not 48, you are 48 years of pure love.<br>
+                    <strong>I am always with you. Always.</strong>
+                </div>
+                <div class="signature-mom">your child, forever · distance never wins</div>
             </div>
         </div>
     </div>
 
     <script>
         (function() {
-            // ---------- STATE ----------
-            let currentBridgeStep = 0;   // 0 = none, 1,2,3 completed
-            let candlesLit = true;
-            let ceremonyVisible = false;
-            let blown = false;
-            let mediaStream = null;
-            let audioCtx = null;
-            let analyserNode = null;
-            let animationId = null;
-            let micActive = false;
+            // emotional steps
+            let step = 0; // 0,1,2,3 -> after 3, candles appear
+            let ceremonyActive = false;
+            let candlesAlive = true;
+            let blownAlready = false;
+            let mediaStream = null, audioContext = null, analyser = null, animFrame = null;
+            let micOn = false;
 
             // DOM elements
-            const stepBtn = document.getElementById('stepBtn');
-            const mainMsg = document.getElementById('mainMessage');
-            const subMsg = document.getElementById('subMessage');
-            const pillar1 = document.getElementById('pillar1');
-            const pillar2 = document.getElementById('pillar2');
-            const pillar3 = document.getElementById('pillar3');
-            const candleZone = document.getElementById('candleZone');
-            const finalZone = document.getElementById('finalZone');
-            const clickBlow = document.getElementById('clickBlowBtn');
-            const micBlow = document.getElementById('micBlowBtn');
-            const micStatus = document.getElementById('micStatusMsg');
-            const flames = [document.getElementById('flame0'), document.getElementById('flame1'), document.getElementById('flame2')];
+            const step1Dot = document.getElementById('step1Dot');
+            const step2Dot = document.getElementById('step2Dot');
+            const step3Dot = document.getElementById('step3Dot');
+            const letterDiv = document.getElementById('dynamicLetter');
+            const subLetter = document.getElementById('dynamicSub');
+            const mainBtn = document.getElementById('mainActionBtn');
+            const candleContainer = document.getElementById('candleRitualDiv');
+            const finalContainer = document.getElementById('finalSurpriseDiv');
+            const flame1 = document.getElementById('flameCandle1');
+            const flame2 = document.getElementById('flameCandle2');
+            const flame3 = document.getElementById('flameCandle3');
+            const clickBlow = document.getElementById('clickBlowFinal');
+            const micBlow = document.getElementById('micBlowFinal');
+            const micStatusSpan = document.getElementById('micStatusMsg');
 
-            // bridge text mapping
-            const bridgeMessages = {
-                1: { main: "every mile is just a number", sub: "— you are never far, mom —" },
-                2: { main: "you're my home, not a place", sub: "woven in every heartbeat" },
-                3: { main: "today, the distance disappears", sub: "48 roses bloom for you, Wahiba" }
+            // emotional letters (her name + personal)
+            const stepMessages = {
+                1: { text: `"I close my eyes and I'm 8 years old again, running to you. Mama Wahiba, every mile between us is just a number — you've never left my heart."`, sub: "— step 1: distance means nothing —" },
+                2: { text: `"Your voice on the phone still fixes my worst days. You taught me strength, kindness, and how to love without limits. I carry you everywhere."`, sub: "— step 2: you are my home —" },
+                3: { text: `"Today you turn 48. Forty-eight years of being the most beautiful soul I know. I wish I could bake you a cake, but I built this for you — from my heart to yours."`, sub: "— step 3: now let's celebrate, mama —" }
             };
 
-            function updateBridgeVisuals() {
-                // reset classes
-                [pillar1, pillar2, pillar3].forEach(p => {
-                    p.classList.remove('completed', 'active');
-                });
-                if (currentBridgeStep >= 1) {
-                    pillar1.classList.add('completed');
-                    if (currentBridgeStep === 1) pillar1.classList.add('active');
+            function updateStepUI() {
+                step1Dot.classList.remove('active', 'completed');
+                step2Dot.classList.remove('active', 'completed');
+                step3Dot.classList.remove('active', 'completed');
+                if (step >= 1) step1Dot.classList.add('completed');
+                if (step >= 2) step2Dot.classList.add('completed');
+                if (step >= 3) step3Dot.classList.add('completed');
+                if (step === 1) step1Dot.classList.add('active');
+                if (step === 2) step2Dot.classList.add('active');
+                if (step === 3) step3Dot.classList.add('active');
+                
+                if (step >= 1 && step <= 3) {
+                    letterDiv.innerText = stepMessages[step].text;
+                    subLetter.innerText = stepMessages[step].sub;
                 }
-                if (currentBridgeStep >= 2) {
-                    pillar2.classList.add('completed');
-                    if (currentBridgeStep === 2) pillar2.classList.add('active');
-                }
-                if (currentBridgeStep >= 3) {
-                    pillar3.classList.add('completed');
-                    if (currentBridgeStep === 3) pillar3.classList.add('active');
-                }
-                if (currentBridgeStep >= 1 && currentBridgeStep <= 3) {
-                    const msg = bridgeMessages[currentBridgeStep];
-                    mainMsg.innerText = msg.main;
-                    subMsg.innerText = msg.sub;
-                } else if (currentBridgeStep === 0) {
-                    mainMsg.innerText = "every mile is just a number";
-                    subMsg.innerText = "— step forward, mom —";
+                if (step === 3) {
+                    mainBtn.innerText = "✨ light the candles, mama ✨";
+                } else if (step < 3) {
+                    mainBtn.innerText = "✧ continue, mama ✧";
                 }
             }
 
-            // advance bridge steps
-            function advanceBridge() {
-                if (blown) return;
-                if (currentBridgeStep < 3) {
-                    currentBridgeStep++;
-                    updateBridgeVisuals();
-                    
-                    if (currentBridgeStep === 3) {
-                        // after third bridge, show candle ceremony and hide step button
-                        stepBtn.style.display = 'none';
-                        candleZone.style.display = 'block';
-                        finalZone.style.display = 'none';
-                        ceremonyVisible = true;
-                        // reset candles flames if needed
-                        resetFlames();
-                        blown = false;
-                        candlesLit = true;
-                    }
+            function resetFlamesNormal() {
+                if (flame1 && flame2 && flame3) {
+                    [flame1, flame2, flame3].forEach(f => {
+                        f.style.background = "radial-gradient(circle, #ffaa55, #ff4422)";
+                        f.style.animation = "dance 0.5s infinite alternate";
+                        f.style.boxShadow = "0 0 14px #ff6644";
+                        f.classList.remove('flame-out');
+                        f.style.width = "18px";
+                        f.style.height = "26px";
+                    });
                 }
+                candlesAlive = true;
             }
 
-            function resetFlames() {
-                flames.forEach(flame => {
-                    if (flame) {
-                        flame.style.background = "radial-gradient(circle, #ff6644, #ff2200)";
-                        flame.style.animation = "flickerSoft 0.7s infinite alternate";
-                        flame.style.boxShadow = "0 0 12px #ff4422";
-                        flame.classList.remove('flame-out');
-                        flame.style.width = "16px";
-                        flame.style.height = "24px";
-                        flame.style.marginBottom = "6px";
+            function extinguishAll() {
+                if (!candlesAlive) return;
+                [flame1, flame2, flame3].forEach(f => {
+                    if (f) {
+                        f.style.background = "#5a3a2a";
+                        f.style.boxShadow = "none";
+                        f.style.animation = "none";
+                        f.classList.add('flame-out');
+                        f.style.width = "12px";
+                        f.style.height = "7px";
                     }
                 });
-                candlesLit = true;
+                candlesAlive = false;
             }
 
-            function extinguishFlames() {
-                if (!candlesLit) return;
-                flames.forEach(flame => {
-                    if (flame) {
-                        flame.style.background = "#4a3a2a";
-                        flame.style.boxShadow = "none";
-                        flame.style.animation = "none";
-                        flame.classList.add('flame-out');
-                        flame.style.width = "12px";
-                        flame.style.height = "6px";
-                        flame.style.marginBottom = "20px";
-                    }
-                });
-                candlesLit = false;
-            }
-
-            function showFinalCelebration() {
-                candleZone.style.display = 'none';
-                finalZone.style.display = 'block';
-                ceremonyVisible = false;
-                blown = true;
+            function showGrandFinale() {
+                candleContainer.classList.add('hidden-block');
+                finalContainer.classList.remove('hidden-block');
+                ceremonyActive = false;
+                blownAlready = true;
                 closeMicrophone();
             }
 
-            function blowCandles() {
-                if (!ceremonyVisible || blown) return;
-                if (candlesLit) {
-                    extinguishFlames();
+            function blowCandlesNow() {
+                if (!ceremonyActive || blownAlready) return;
+                if (candlesAlive) {
+                    extinguishAll();
                     setTimeout(() => {
-                        showFinalCelebration();
-                    }, 350);
+                        showGrandFinale();
+                    }, 400);
                 }
             }
 
-            // microphone blow detection
-            async function initMicrophone() {
-                if (micActive) {
-                    micStatus.innerText = "🎙️ already listening, blow gently!";
-                    return;
-                }
-                if (!ceremonyVisible || blown) {
-                    micStatus.innerText = "complete the bridges first ❤️";
-                    return;
-                }
+            // micro blow detection
+            async function initMicForBlow() {
+                if (micOn) { micStatusSpan.innerText = "🎙️ listening already, blow softly!"; return; }
+                if (!ceremonyActive || blownAlready) { micStatusSpan.innerText = "complete the three steps first ❤️"; return; }
                 try {
                     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
                     mediaStream = stream;
-                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                    analyserNode = audioCtx.createAnalyser();
-                    analyserNode.fftSize = 256;
-                    const source = audioCtx.createMediaStreamSource(stream);
-                    source.connect(analyserNode);
-                    const dataArray = new Uint8Array(analyserNode.frequencyBinCount);
-                    micActive = true;
-                    micStatus.innerText = "🎤 listening! blow toward device → candles go out";
+                    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    analyser = audioContext.createAnalyser();
+                    analyser.fftSize = 256;
+                    const source = audioContext.createMediaStreamSource(stream);
+                    source.connect(analyser);
+                    const dataArr = new Uint8Array(analyser.frequencyBinCount);
+                    micOn = true;
+                    micStatusSpan.innerText = "🎤 blow toward your phone/mic, mama!";
 
-                    function detectBlow() {
-                        if (!micActive || blown || !ceremonyVisible) {
-                            if (animationId) cancelAnimationFrame(animationId);
+                    function detectBlowLoop() {
+                        if (!micOn || blownAlready || !ceremonyActive) {
+                            if (animFrame) cancelAnimationFrame(animFrame);
                             return;
                         }
-                        analyserNode.getByteFrequencyData(dataArray);
+                        analyser.getByteFrequencyData(dataArr);
                         let sum = 0;
-                        for (let i = 0; i < dataArray.length; i++) sum += dataArray[i];
-                        const avg = sum / dataArray.length;
-                        if (avg > 72 && candlesLit) {
-                            blowCandles();
-                            micStatus.innerText = "✨ wish made! ✨";
+                        for (let i = 0; i < dataArr.length; i++) sum += dataArr[i];
+                        let avg = sum / dataArr.length;
+                        if (avg > 70 && candlesAlive) {
+                            blowCandlesNow();
+                            micStatusSpan.innerText = "✨ your wish is flying to me ✨";
                             closeMicrophone();
                             return;
                         }
-                        animationId = requestAnimationFrame(detectBlow);
+                        animFrame = requestAnimationFrame(detectBlowLoop);
                     }
-                    if (animationId) cancelAnimationFrame(animationId);
-                    animationId = requestAnimationFrame(detectBlow);
-                    if (audioCtx.state === 'suspended') await audioCtx.resume();
-                } catch (err) {
-                    micStatus.innerText = "mic permission needed. use click blow instead";
-                    micActive = false;
+                    if (animFrame) cancelAnimationFrame(animFrame);
+                    animFrame = requestAnimationFrame(detectBlowLoop);
+                    if (audioContext.state === 'suspended') await audioContext.resume();
+                } catch(e) {
+                    micStatusSpan.innerText = "mic not allowed. use touch blow 💕";
+                    micOn = false;
                 }
             }
 
             function closeMicrophone() {
-                if (animationId) {
-                    cancelAnimationFrame(animationId);
-                    animationId = null;
-                }
-                if (mediaStream) {
-                    mediaStream.getTracks().forEach(track => track.stop());
-                    mediaStream = null;
-                }
-                if (audioCtx) {
-                    audioCtx.close().catch(e => null);
-                    audioCtx = null;
-                }
-                micActive = false;
+                if (animFrame) cancelAnimationFrame(animFrame);
+                if (mediaStream) mediaStream.getTracks().forEach(t => t.stop());
+                if (audioContext) audioContext.close();
+                mediaStream = null; audioContext = null; micOn = false;
             }
 
-            // events
-            stepBtn.addEventListener('click', advanceBridge);
+            // main button logic: steps
+            mainBtn.addEventListener('click', () => {
+                if (blownAlready) return;
+                if (step < 3) {
+                    step++;
+                    updateStepUI();
+                    if (step === 3) {
+                        // after third step, next click will show candles
+                    }
+                } 
+                else if (step === 3 && !ceremonyActive && !blownAlready) {
+                    // move to candle ceremony
+                    ceremonyActive = true;
+                    candleContainer.classList.remove('hidden-block');
+                    finalContainer.classList.add('hidden-block');
+                    mainBtn.style.display = 'none';
+                    resetFlamesNormal();
+                    candlesAlive = true;
+                }
+            });
+
+            // blow handlers
             if (clickBlow) {
                 clickBlow.addEventListener('click', () => {
-                    if (!ceremonyVisible || blown) {
-                        micStatus.innerText = "cross all three bridges first 🌹";
-                        setTimeout(() => { if (micStatus) micStatus.innerText = ""; }, 1500);
-                        return;
-                    }
-                    blowCandles();
+                    if (!ceremonyActive || blownAlready) return;
+                    blowCandlesNow();
                 });
             }
             if (micBlow) {
                 micBlow.addEventListener('click', () => {
-                    if (!ceremonyVisible || blown) {
-                        micStatus.innerText = "please finish the three bridges before blowing";
-                        setTimeout(() => { if (micStatus) micStatus.innerText = ""; }, 1500);
-                        return;
-                    }
-                    initMicrophone();
+                    if (!ceremonyActive || blownAlready) return;
+                    initMicForBlow();
                 });
             }
 
-            // floating red particles
-            function createRedParticles() {
-                const container = document.getElementById('particlesBg');
-                for (let i = 0; i < 80; i++) {
-                    const particle = document.createElement('div');
-                    particle.classList.add('particle');
-                    const size = Math.random() * 4 + 2;
-                    particle.style.width = size + 'px';
-                    particle.style.height = size + 'px';
-                    particle.style.left = Math.random() * 100 + '%';
-                    particle.style.animationDuration = Math.random() * 8 + 5 + 's';
-                    particle.style.animationDelay = Math.random() * 10 + 's';
-                    particle.style.background = `radial-gradient(circle, #ff5555, #aa1111)`;
-                    container.appendChild(particle);
+            // floating petals (romantic)
+            function createPetals() {
+                const container = document.getElementById('petalContainer');
+                for (let i = 0; i < 70; i++) {
+                    const pet = document.createElement('div');
+                    pet.classList.add('petal');
+                    const size = Math.random() * 7 + 4;
+                    pet.style.width = size + 'px';
+                    pet.style.height = size * 0.7 + 'px';
+                    pet.style.left = Math.random() * 100 + '%';
+                    pet.style.animationDuration = Math.random() * 9 + 6 + 's';
+                    pet.style.animationDelay = Math.random() * 15 + 's';
+                    pet.style.background = `radial-gradient(ellipse, #ff5577, #aa2244)`;
+                    pet.style.opacity = Math.random() * 0.4 + 0.15;
+                    container.appendChild(pet);
                 }
             }
-            createRedParticles();
+            createPetals();
 
             // initial state
-            currentBridgeStep = 0;
-            updateBridgeVisuals();
-            candleZone.style.display = 'none';
-            finalZone.style.display = 'none';
-            stepBtn.style.display = 'block';
-            blown = false;
-            ceremonyVisible = false;
+            step = 0;
+            updateStepUI();
+            candleContainer.classList.add('hidden-block');
+            finalContainer.classList.add('hidden-block');
+            mainBtn.style.display = 'block';
+            ceremonyActive = false;
+            blownAlready = false;
         })();
     </script>
 </body>
